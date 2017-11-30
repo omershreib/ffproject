@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block username %}
+{{ username }}
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div id="chart">
+    <embed type="image/svg+xml" src = {{ chart|safe }}>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block username %}
+{{ username }}
+{% endblock %}
+
+
+{% block homepage %}
+<a class="navbar-brand" href="{{ url_for('home', user_login=username) }}">
+{% endblock %}
+
+
+    {% block logout %}
+    <a class="nav-link" href="{{ url_for('logout', user_login=username) }}">logout</a>
+    {% endblock %}
+
+{% block body %}
+
+<h1>Profile Setting</h1>
+<form action="{{ url_for('basic_profile', user_login=username) }}" method="post">
+    <div class="form-group">
+      <label for="fullname">Full Name:</label>
+      <input type="text" class="form-control" name = "fullname" id="fullname">
+    </div>
+        <div class="form-group">
+      <label for="life_status">Life Status</label>
+      <input type="text" class="form-control" list="life-status-list" name = "life_status" id="life_status">
+    </div>
+    <div class="form-group">
+      <label for="financial_status">Financial Status</label>
+      <input type="number" class="form-control" name = "financial_status" id="financial_status">
+    </div>
+        <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" class="form-control" name = "salary" id="salary">
+    </div>
+        <div class="form-group">
+      <label for="avg_expense">Average Expanse</label>
+      <input type="number" class="form-control" name = "avg_expense" id="avg_expense">
+    </div>
+            <div class="form-group">
+      <label for="avg_expense">Traget Name</label>
+      <input type="text" list="target-names-list" class="form-control" name = "target_name" id="target_name">
+    </div>
+            <div class="form-group">
+      <label for="avg_expense">Target Amount</label>
+      <input type="number" class="form-control" name = "target_value" id="target_value">
+    </div>
+            <div class="form-group">
+      <label for="avg_expense">Target Date</label>
+      <input type="date" class="form-control" name = "target_date" id="target_date">
+    </div>
+
+
+
+    <datalist id="target-names-list">
+        {% for name in target_list %}
+            <option value="{{ target_list[name] }}">
+        {% endfor %}
+    </datalist>
+
+        <datalist id="life-status-list">
+        {% for name in life_status %}
+            <option value="{{ life_status[name] }}">
+        {% endfor %}
+    </datalist>
+
+
+    <input type="submit" class="btn btn-info" value="Submit">
+</form>
+
+{% endblock %}

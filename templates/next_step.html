@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block username %}
+{{ username }}
+{% endblock %}
+
+
+{% block learning %}
+<a class="nav-link" href="{{ url_for('learning', user_login=username) }}">Learning</a>
+{% endblock %}
+
+{% block nextstep %}
+<a class="nav-link" href="{{ url_for('next_step', user_login=username) }}">Next Step</a>
+{% endblock %}
+
+{% block homepage %}
+<a class="navbar-brand" href="{{ url_for('home', user_login=username) }}">
+{% endblock %}
+
+{% block profile %}
+    <a class="nav-link" href="{{ url_for('update_profile', user_login=username) }}">Profile</a>
+{% endblock %}
+
+    {% block logout %}
+    <a class="nav-link" href="{{ url_for('logout', user_login=username) }}">logout</a>
+    {% endblock %}
+
+{% block body %}
+
+<h1>Next Step</h1>
+    <br>
+
+    {% for step in steps %}
+
+    <div class="checkbox">
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+
+            <div class="col-sm-4">
+                <strong>{{ steps[step].details }}</strong>
+                <br>
+                <small>{{ steps[step].reason }}</small>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-4">
+                <label class="checkbox-inline" name="relevant" id="relevant">
+
+            </label>
+
+                <input type="checkbox" class="my_checkbox">
+                <label style="margin-left: 1em;">
+
+                 <input class="my_checkbox" type="checkbox" name="step"  id="step"></label>
+            </label>
+                <input type="checkbox" class="my_checkbox">
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    {% endfor %}
+
+
+{% endblock %}

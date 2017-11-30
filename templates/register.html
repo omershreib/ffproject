@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>Register</h1>
+<form action="{{ url_for('register') }}" method="post">
+    <div class="form-group">
+      <label for="usr">Name:</label>
+      <input type="text" class="form-control" name = "usr" id="usr">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" name = "pwd" id="pwd">
+    </div>
+        <div class="form-group">
+      <label for="pwd">Confirm Password:</label>
+      <input type="password" class="form-control" name = "con_pwd" id="con_pwd">
+    </div>
+        <div class="form-group">
+        <label for="email">Age:</label>
+        <input type="number" class="form-control" name = "age" id="age">
+    </div>
+        <div class="form-group">
+        <label for="gender">Gender:</label>
+        <!--<input type="text" list="gender-list" class="form-control" name = "gender" id="gender">-->
+            {% for gender in gender_list %}
+            <label class="radio-inline">
+
+                <input type="radio" name="gender"  id="gender">
+                    {{ gender }}
+                </input>
+
+            </label>
+            {% endfor %}
+    </div>
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" name = "email" id="email">
+    </div>
+    <input type="submit" class="btn btn-info" value="Sign Up!">
+</form>
+
+<datalist id="gender-list">
+    {% for gender in gender_list %}
+        <option value="{{ gender }}"></option>
+    {% endfor %}
+</datalist>
+
+{% endblock %}

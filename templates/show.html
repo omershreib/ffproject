@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>All Steps</h1>
+{% for step in steps %}
+   {{ step.name }} : {{ step.details }}
+<br>
+{% endfor %}
+
+<h1>All Concepts</h1>
+{% for concept in concepts %}
+   {{ concept.name }} : {{ concept.details }}
+<br>
+{% endfor %}
+
+{% endblock %}
